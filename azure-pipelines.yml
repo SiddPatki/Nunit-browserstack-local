@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  vmImage: 'macOS-latest'
+  vmImage: 'windows-2019'
 
 variables:
   solution: '**/*.sln'
