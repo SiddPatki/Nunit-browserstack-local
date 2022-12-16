@@ -28,10 +28,10 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: VSTest@2
+- task: BrowserStackConfig@0
   inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    BrowserStackServiceEndPoint: 'BrowserStack-Sid'
+
 - task: VSTest@2
   inputs:
     testSelector: 'testAssemblies'
@@ -40,6 +40,3 @@ steps:
       !**\*TestAdapter.dll
       !**\obj\**
     searchFolder: '$(System.DefaultWorkingDirectory)'
-- task: BrowserStackConfig@0
-  inputs:
-    BrowserStackServiceEndPoint: 'BrowserStack-Sid'
