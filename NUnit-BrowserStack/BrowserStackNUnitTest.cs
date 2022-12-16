@@ -15,7 +15,7 @@ namespace BrowserStack
         protected IWebDriver driver;
         protected string profile;
         protected string environment;
-        private Local browserStackLocal;
+//         private Local browserStackLocal;
 
         public BrowserStackNUnitTest(string profile, string environment)
         {
@@ -74,25 +74,25 @@ namespace BrowserStack
             browserstackOptions.Add("userName", username);
             browserstackOptions.Add("accessKey", accesskey);
 
-            if (caps.Get("local").ToString() == "true")
-            {
-                browserStackLocal = new Local();
-                List<KeyValuePair<string, string>> bsLocalArgs = new List<KeyValuePair<string, string>>();
-                // Starts the Local instance with the required arguments
-                bsLocalArgs.Add(new KeyValuePair<string, string>("key", accesskey));
-                //bsLocalArgs.Add(new KeyValuePair<string, string>("binarypath", "/Users/siddharthapatki/Downloads/BrowserStackLocal"));
-                bsLocalArgs.Add(new KeyValuePair<string, string>("v", "true"));
-                bsLocalArgs.Add(new KeyValuePair<string, string>("logfile", "./logs.txt"));
-                bsLocalArgs.Add(new KeyValuePair<string, string>("forcelocal", "true"));
-                bsLocalArgs.Add(new KeyValuePair<string, string>("-use-system-installed-ca", "true"));
-                bsLocalArgs.Add(new KeyValuePair<string, string>("localIdentifier", "HelloWorllldd"));
+//             if (caps.Get("local").ToString() == "true")
+//             {
+//                 browserStackLocal = new Local();
+//                 List<KeyValuePair<string, string>> bsLocalArgs = new List<KeyValuePair<string, string>>();
+//                 // Starts the Local instance with the required arguments
+//                 bsLocalArgs.Add(new KeyValuePair<string, string>("key", accesskey));
+//                 //bsLocalArgs.Add(new KeyValuePair<string, string>("binarypath", "/Users/siddharthapatki/Downloads/BrowserStackLocal"));
+//                 bsLocalArgs.Add(new KeyValuePair<string, string>("v", "true"));
+//                 bsLocalArgs.Add(new KeyValuePair<string, string>("logfile", "./logs.txt"));
+//                 bsLocalArgs.Add(new KeyValuePair<string, string>("forcelocal", "true"));
+//                 bsLocalArgs.Add(new KeyValuePair<string, string>("-use-system-installed-ca", "true"));
+//                 bsLocalArgs.Add(new KeyValuePair<string, string>("localIdentifier", "HelloWorllldd"));
 
 
-                // Starts the Local instance with the required arguments
-                browserStackLocal.start(bsLocalArgs);
+//                 // Starts the Local instance with the required arguments
+//                 browserStackLocal.start(bsLocalArgs);
 
 
-            }
+//             }
             capability.AddAdditionalOption("bstack:options", browserstackOptions);
             driver = new RemoteWebDriver(
               new Uri("http://" + ConfigurationManager.AppSettings.Get("server") + "/wd/hub/"),
@@ -104,10 +104,10 @@ namespace BrowserStack
         public void Cleanup()
         {
             driver.Quit();
-            if (browserStackLocal != null)
-            {
-                browserStackLocal.stop();
-            }
+//             if (browserStackLocal != null)
+//             {
+//                 browserStackLocal.stop();
+//             }
         }
     }
 }
